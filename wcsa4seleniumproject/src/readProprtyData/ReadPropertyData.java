@@ -15,7 +15,6 @@ public class ReadPropertyData {
 		prop.load(fis); // use to read the file
 		String data = prop.getProperty("Key");
 		System.out.println(data);
-		
 	}
 
 }

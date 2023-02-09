@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 	// to avoid StaleReferanceException
-	
+	// declarations
 	@FindBy(name="username") private WebElement UsernameTB;
 	@FindBy(name="pwd") private WebElement PasswordTB;
 	@FindBy(id="loginButton") private WebElement LoginButton;
@@ -15,6 +15,7 @@ public class LoginPage {
 	@FindBy(xpath = "//a[.='Actimind Inc.']") private WebElement ActiMindLink;
 	@FindBy(id = "licenseLink") private WebElement LicenseLink;
 	
+	// initialization
 	public LoginPage(WebDriver driver)
 	{
 		PageFactory.initElements(driver,this);

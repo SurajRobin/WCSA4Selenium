@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
-public class ContextClickMwthod {
+public class ContextClickMethod {
 	public static void main(String[] args) {
 	System.setProperty("webdriver.chrome.driver","./drivers/chromedriver.exe");
 	WebDriver driver = new ChromeDriver();

@@ -9,10 +9,9 @@ public class NotificationPopup {
 	public static void main(String[] args) throws InterruptedException {
 	
 		System.setProperty("webdriver.chrome.driver","./drivers/chromedriver.exe");
-		// if we write ( o.addArguments("--disable-notifications"); ) then notification popup it will not come
-		// if we don't write ( o.addArguments("--disable-notifications"); ) then it will come 
-		ChromeOptions o = new ChromeOptions();
 		
+		ChromeOptions o = new ChromeOptions();
+		// to handle the Notification pop-up
 		o.addArguments("--disable-notifications");
 		Thread.sleep(2000);
 		//  working maximize the window

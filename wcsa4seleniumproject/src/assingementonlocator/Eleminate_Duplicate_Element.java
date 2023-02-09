@@ -11,6 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public class Eleminate_Duplicate_Element {
+	
 	public static void main(String[] args) {
 		
 		System.setProperty("webdriver.chrome.driver","./drivers/chromedriver.exe");
@@ -20,6 +21,7 @@ public class Eleminate_Duplicate_Element {
 		driver.get("file:///D:/WorkSpaceForWCSA4/MultiSelectDropdown.html");
 		
 		WebElement dropdownelement = driver.findElement(By.id("i1"));
+		
 		Select sel = new Select(dropdownelement);
 		// to get options of dropdown
 		List<WebElement> alloptions = sel.getOptions();

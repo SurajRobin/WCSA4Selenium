@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class DoubleClick_and_Inspect_SeleniumDevApp {
+	
 	public static void main(String[] args) throws InterruptedException, AWTException {
 		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
 		WebDriver driver = new ChromeDriver();

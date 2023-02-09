@@ -1,68 +1,53 @@
 package qsp;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.time.Duration;
+import java.util.Scanner;
 
-import org.apache.poi.EncryptedDocumentException;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
-
-class Flib
-{
-	public String readExcelData() throws EncryptedDocumentException, IOException
-	{
-		FileInputStream fis = new FileInputStream("./data/ActitimeTestData.xlsx");
-		Workbook wb = WorkbookFactory.create(fis);
-		Sheet sheet = wb.getSheet("validcreds");
-		Row row = sheet.getRow(1);
-		Cell cell = row.getCell(0);
-		String data = cell.getStringCellValue();
-		return data;
-	}
-	public int rowCount() throws EncryptedDocumentException, IOException
-	{
-		FileInputStream fis = new FileInputStream(",/data/Actitime.xlsx");
-		Workbook wb = WorkbookFactory.create(fis);
-		Sheet sheet = wb.getSheet("validcreds");
-		int rc = sheet.getLastRowNum();
-		return rc;	
-	}
-	public void writeExcelData() throws EncryptedDocumentException, IOException
-	{
-		FileInputStream fis = new FileInputStream("./data/ActitimeTestData.xlsx");
-		Workbook wb = WorkbookFactory.create(fis);
-		Sheet sheet = wb.getSheet("validcreds");
-		Row row = sheet.getRow(2);
-		Cell cell = row.createCell(0);
-		cell.setCellValue("Suraj");
-		
-		FileOutputStream fos = new FileOutputStream("./data/Actitime.xlsx");
-		wb.write(fos);	
-	}
-	
-}
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Demo {
-
-	public static void main(String[] args) throws EncryptedDocumentException, IOException {
-
-		FileInputStream fis = new FileInputStream("./data/ActitimeTestData.xlsx");
-		Workbook wb = WorkbookFactory.create(fis);
-		Sheet sheet = wb.getSheet("invalidcreds");
-		int rc = sheet.getLastRowNum();
-
-		for (int i = 1; i <= rc; i++) {
-
-			wb.getSheet("invalidcreds");
-			Row row = sheet.getRow(i);
-			Cell cell = row.getCell(0);
-			System.out.println(cell.getStringCellValue());
-
+	static WebDriver driver;
+	public static void main(String[] args) throws InterruptedException {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the valid browser");
+		String browserValue = sc.next();
+		
+		if(browserValue.equals("chrome"))
+		{
+			System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
+			driver = new ChromeDriver();
+			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+			driver.get("https://www.google.com/");
+			Thread.sleep(2000);
+			driver.quit();
+		}
+		else if(browserValue.equals("firefox"))
+		{
+			System.setProperty("webdriver.gecko.driver", "./drivers/geckodiver.exe");
+			driver = new FirefoxDriver();
+			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+			driver.get("https://www.google.com/");
+			Thread.sleep(2000);
+			driver.quit();
+		}
+		else if (browserValue.equals("edge"))
+		{
+			System.setProperty("webdriver.msedg.driver", "./drivers/msedgdiver.exe");
+			driver = new EdgeDriver();
+			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+			driver.get("https://www.google.com/");
+			Thread.sleep(2000);
+			driver.quit();
+		}
+		else
+		{
+			System.out.println("Enter the valid browser");
 		}
 	}
 }

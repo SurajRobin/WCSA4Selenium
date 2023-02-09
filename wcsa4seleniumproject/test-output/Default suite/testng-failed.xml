@@ -3,14 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="takeScreenShotDynamicallyTestNG.ActitimeTestNGLogin">
+      <class name="testNGPack.TestValidLogin2">
         <methods>
-          <include name="homePage"/>
-          <include name="teardown"/>
           <include name="setUp"/>
-          <include name="failed"/>
         </methods>
-      </class> <!-- takeScreenShotDynamicallyTestNG.ActitimeTestNGLogin -->
+      </class> <!-- testNGPack.TestValidLogin2 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
