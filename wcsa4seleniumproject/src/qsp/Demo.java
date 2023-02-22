@@ -3,51 +3,38 @@ package qsp;
 import java.time.Duration;
 import java.util.Scanner;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 
 public class Demo {
-	static WebDriver driver;
+	
 	public static void main(String[] args) throws InterruptedException {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the valid browser");
-		String browserValue = sc.next();
+		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.get("https://www.flipkart.com/");
+		driver.findElement(By.xpath("//button[.='✕']")).click();
 		
-		if(browserValue.equals("chrome"))
-		{
-			System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
-			driver = new ChromeDriver();
-			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-			driver.get("https://www.google.com/");
-			Thread.sleep(2000);
-			driver.quit();
-		}
-		else if(browserValue.equals("firefox"))
-		{
-			System.setProperty("webdriver.gecko.driver", "./drivers/geckodiver.exe");
-			driver = new FirefoxDriver();
-			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-			driver.get("https://www.google.com/");
-			Thread.sleep(2000);
-			driver.quit();
-		}
-		else if (browserValue.equals("edge"))
-		{
-			System.setProperty("webdriver.msedg.driver", "./drivers/msedgdiver.exe");
-			driver = new EdgeDriver();
-			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-			driver.get("https://www.google.com/");
-			Thread.sleep(2000);
-			driver.quit();
-		}
-		else
-		{
-			System.out.println("Enter the valid browser");
-		}
+		WebElement target = driver.findElement(By.xpath("(//div[@class='eFQ30H'])[5]"));
+		Actions act=new Actions(driver);
+		act.moveToElement(target).perform();
+		
+		WebElement target1 = driver.findElement(By.xpath("(//div[@class='CXW8mj'])[2]"));
+		act.doubleClick(target1).perform();
+		
+		WebElement target2 = driver.findElement(By.xpath("//h1[.='Mobile Phones']"));
+		act.contextClick(target2).perform();
+		Thread.sleep(4000);
+		driver.quit();
+		
+		
+		
 	}
 }
